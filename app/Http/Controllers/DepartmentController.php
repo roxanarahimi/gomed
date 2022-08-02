@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreDepartment;
+use App\Http\Requests\UpdateDepartment;
 use App\Http\Resources\DepartmentResource;
 use App\Models\Department;
-use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
@@ -21,7 +22,7 @@ class DepartmentController extends Controller
             return response($exception);
         }
     }
-    public function store(Request $request)
+    public function store(StoreDepartment $request)
     {
         try {
             $department = Department::create($request->all());
@@ -38,7 +39,7 @@ class DepartmentController extends Controller
             return response($exception);
         }
     }
-    public function update(Request $request, Department $department)
+    public function update(UpdateDepartment $request, Department $department)
     {
         try {
             $department->update($request->all());
